@@ -1,7 +1,7 @@
 {
     "uuid": "smart-resize@garretpatti.github.com",
     "name": "Smart Resize",
-    "description": "Auto resize a window that is too big for your current screen",
+    "description": "Auto resize a window that is too large for your current screen",
     "shell-version": ["43"],
     "url": "https://github.com/garretpatti/smart-resize",
     "version": 1
