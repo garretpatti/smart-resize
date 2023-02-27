@@ -25,17 +25,13 @@ class Extension {
         
     }
     enable() {
-        log(`enabling ${Me.metadata.name}`);
         this._on_window_grab_end = global.display.connect('grab-op-end',
          this.window_grab_end.bind(this));
     }
     disable() {
-        log(`disabling ${Me.metadata.name}`);
         global.display.disconnect(this._on_window_grab_end);
     }   
 }
 function init(meta) {
-    log(`initializing ${meta.metadata.name}`);
-    
     return new Extension();
 }
