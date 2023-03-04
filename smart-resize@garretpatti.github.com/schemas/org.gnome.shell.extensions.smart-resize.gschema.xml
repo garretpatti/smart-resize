@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.smart-resize"
+     path="/org/gnome/shell/extensions/smart-resize/">
+        <key type="b" name="horizontal-resize">
+            <default>true</default>
+            <summary>Resize windows horizontally</summary>
+            <description></description>
+        </key>
+        <key type="b" name="vertical-resize">
+            <default>true</default>
+            <summary>Resize windows vertically</summary>
+            <description></description>
+        </key>
+        <key type="b" name="snap-in-place">
+            <default>true</default>
+            <summary>Snap windows into place</summary>
+        </key>
+    </schema>
+</schemalist>
