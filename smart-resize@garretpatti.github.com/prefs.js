@@ -14,13 +14,16 @@ function fillPreferencesWindow(window) {
         'org.gnome.shell.extensions.smart-resize');
     
     const page = new Adw.PreferencesPage();
+    /*
+     * Resize group
+     */
     const gResize = new Adw.PreferencesGroup();
     gResize.set_title("Resizing")
     page.add(gResize);
 
     /*
      * Resize windows horizontally row
-    */
+     */
     const rHorResize = new Adw.ActionRow({ title: 'Resize windows horizontally' });
     gResize.add(rHorResize);
 
@@ -40,7 +43,7 @@ function fillPreferencesWindow(window) {
 
     /*
      * Resize windows vertically row
-    */
+     */
     const rVerResize = new Adw.ActionRow({ title: 'Resize windows Vertically' });
     gResize.add(rVerResize);
 
@@ -58,11 +61,16 @@ function fillPreferencesWindow(window) {
     rVerResize.add_suffix(tVResize);
     rVerResize.activatable_widget = tVResize;
 
-    const gSnap = new Adw.PreferencesGroup();
-    page.add(gSnap);
-
+    /*
+     * "Etc" group
+     */
+    const gEtc = new Adw.PreferencesGroup();
+    page.add(gEtc);
+    /*
+     * Snap in place row
+     */
     const rSnap = new Adw.ActionRow({ title: "Snap windows in place after resize"});
-    gSnap.add(rSnap);
+    gEtc.add(rSnap);
 
     const tSnap = new Gtk.Switch({
         active: settings.get_boolean('snap-in-place'),

@@ -1,5 +1,4 @@
 'use strict';
-// This is a handy import we'll use to grab our extension's object
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 
@@ -10,7 +9,9 @@ class Extension {
     constructor() {
     }
     _window_grab_end(meta_display, meta_window, meta_grab_op, gpointer) {
-        this._auto_move_resize(meta_window);
+        if(meta_grab_op == Meta.GrabOp.MOVING) {
+            this._auto_move_resize(meta_window);
+        }
     }
     _auto_move_resize(meta_window) {
         let window_rec = meta_window.get_frame_rect();
