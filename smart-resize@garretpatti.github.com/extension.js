@@ -20,22 +20,16 @@ class Extension {
         let snap_n_place = this.settings.get_boolean('snap-in-place');
 
         if (hor_resize && window_rec.width > display_rec.width) {
-            let left_overlap = window_rec.x - display_rec.x;
-            let right_overlap = left_overlap + window_rec.width; 
             if(snap_n_place) {
                 window_rec.x = display_rec.x;
-            } else if (right_overlap > left_overlap) {
-                window_rec.x = window_rec.x + (window_rec.width - display_rec.width);
+            } else {
+                window_rec.x = window_rec.x + ((window_rec.width - display_rec.width)/2);
             }
             window_rec.width = display_rec.width;
         }
         if (ver_resize && window_rec.height > display_rec.height) {
-            let top_overlap = window_rec.y - display_rec.y;
-            let bottom_overlap = top_overlap + window_rec.height; 
             if(snap_n_place) {
                 window_rec.y = display_rec.y;
-            } else if (top_overlap > bottom_overlap) {
-                window_rec.y = window_rec.y + (window_rec.height - display_rec.height);
             }
             window_rec.height = display_rec.height;
         }

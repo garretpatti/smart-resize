@@ -10,21 +10,20 @@ function init() {
 }
 
 function fillPreferencesWindow(window) {
-    // Use the same GSettings schema as in `extension.js`
     const settings = ExtensionUtils.getSettings(
         'org.gnome.shell.extensions.smart-resize');
     
-    // Create a preferences page and group
     const page = new Adw.PreferencesPage();
     const gResize = new Adw.PreferencesGroup();
     gResize.set_title("Resizing")
     page.add(gResize);
 
-    // Create a new preferences row
+    /*
+     * Resize windows horizontally row
+    */
     const rHorResize = new Adw.ActionRow({ title: 'Resize windows horizontally' });
     gResize.add(rHorResize);
 
-    // Create the switch and bind its value to the `show-indicator` key
     const tHResize = new Gtk.Switch({
         active: settings.get_boolean ('horizontal-resize'),
         valign: Gtk.Align.CENTER,
@@ -36,15 +35,15 @@ function fillPreferencesWindow(window) {
         Gio.SettingsBindFlags.DEFAULT
     );
 
-    // Add the switch to the row
     rHorResize.add_suffix(tHResize);
     rHorResize.activatable_widget = tHResize;
 
-    // Create a new preferences row
+    /*
+     * Resize windows vertically row
+    */
     const rVerResize = new Adw.ActionRow({ title: 'Resize windows Vertically' });
     gResize.add(rVerResize);
 
-    // Create the switch and bind its value to the `show-indicator` key
     const tVResize = new Gtk.Switch({
         active: settings.get_boolean ('vertical-resize'),
         valign: Gtk.Align.CENTER,
@@ -56,7 +55,6 @@ function fillPreferencesWindow(window) {
         Gio.SettingsBindFlags.DEFAULT
     );
 
-    // Add the switch to the row
     rVerResize.add_suffix(tVResize);
     rVerResize.activatable_widget = tVResize;
 
@@ -81,6 +79,5 @@ function fillPreferencesWindow(window) {
     rSnap.activatable_widget = tSnap;
 
 
-    // Add our page to the window
     window.add(page);
 }
